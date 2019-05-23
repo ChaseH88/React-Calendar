@@ -1,31 +1,25 @@
 import React from "react";
 import Day from "./Day";
-import styled from "styled-components";
-
-// Temp, will be eventually generated through state
-export let year = new Date().getFullYear();
-export let month = new Date().getMonth();
 
 // Styled Component
-const WeekStyle = styled.div`
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(7, 7fr);
-    grid-gap: 0;
-`;
+import { WeekStyle } from "./styled-components/Week";
 
 const Week = (props) => {
   
+  // Pull the current selection out of the props
+  const { month, year } = props;
+
   // Build out the days with the prop data
   const showDays = () => {
 
     // Grab the data out of the props
-    const days = Object.keys(props)
+    const days = Object.keys(props);
     let daysArr = [];
 
     // Push to array for mapping
     for(let day of days){
-      daysArr.push(props[day]);
+    //ignore other props, only grab the days
+      day.length === 1 && daysArr.push(props[day]);      
     }
     
     // Add data for blank days
@@ -63,13 +57,12 @@ const Week = (props) => {
         }
         // Merge the arrays to get the correct data
         daysArr = [...daysArr, ...addedDays];
-        console.log(daysArr)
       }
     }
 
     // Render the days
     let dayRender = daysArr.map(day => {
-      return <Day date={day} key={day.toString().toLowerCase().replace(/ /g,"")} />
+      return <Day {...day} date={day} key={day.toString().toLowerCase().replace(/ /g,"")} month={month} year={year} />
     })
     return dayRender;
   }

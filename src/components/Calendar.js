@@ -4,9 +4,12 @@ import React, { Fragment } from "react";
 import Week from "./Week";
 import Month from "./Month";
 
+// Styled Components
+import { WeekStyle } from "./styled-components/Week";
+
 // Temp, will be eventually generated through state
-export let year = new Date().getFullYear();
-export let month = new Date().getMonth();
+let year = new Date().getFullYear();
+let month = new Date().getMonth();
 
 
 const Calendar = () => {
@@ -23,9 +26,9 @@ const Calendar = () => {
       )
     });
     return(
-      <div className="week">
+      <WeekStyle className="week">
         {days}
-      </div>
+      </WeekStyle>
     );
   }
 
@@ -68,7 +71,7 @@ const Calendar = () => {
         <Month month={currentMonth} key={`month${currentMonth}`} />
         {generateDaysOfWeek()}
         {monthData.weeks.map((week, index) => {
-          return(<Week {...week} key={`week${index}`} />)
+          return(<Week {...week} key={`week${index}`} year={year} month={month} />)
         })}
       </Fragment>
     )

@@ -1,25 +1,25 @@
 import React from "react";
 import moment from "moment";
-import styled from "styled-components";
 
-// Styled Component
-const DayStyle = styled.div`
-  min-height: 50px;
-  height: 3vw;
-  max-height: 200px;
-  box-shadow: inset 0 0 0px 1px #eadfdf;
-`;
-
+// Styles
+import { DayStyle } from "./styled-components/Day";
 
 const Day = (props) => {
-
+  
   // Grab the day data
-  const { date } = props;
+  const { date, month, year } = props;
 
-  // HOOK UP MOMENT NEXT
+  // Adds classes depending on if current month
+  const checkCurrentMonth = (date, month) => {
+    let className = "";
+    date.getMonth() !== month ?
+      className = "notCurrent" :
+      className = "current";
+    return className;
+  }
 
   return(
-    <DayStyle className="day">
+    <DayStyle className={`day ${checkCurrentMonth(date, month)}`}>
       {moment(date).format("Do")}
     </DayStyle>
   )
