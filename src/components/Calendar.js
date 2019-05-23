@@ -5,8 +5,8 @@ import Week from "./Week";
 import Month from "./Month";
 
 // Temp, will be eventually generated through state
-let year = new Date().getFullYear();
-let month = new Date().getMonth();
+export let year = 2000;
+export let month = new Date().getMonth();
 
 
 const Calendar = () => {
@@ -65,7 +65,7 @@ const Calendar = () => {
     // Render The Calendar
     return(
       <Fragment>
-        <Month month={currentMonth} />
+        <Month month={currentMonth} key={`month${currentMonth}`} />
         {generateDaysOfWeek()}
         {monthData.weeks.map((week, index) => {
           return(<Week {...week} key={`week${index}`} />)
