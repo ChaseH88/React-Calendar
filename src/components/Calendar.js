@@ -5,7 +5,7 @@ import Week from "./Week";
 import Month from "./Month";
 
 // Temp, will be eventually generated through state
-export let year = 2000;
+export let year = new Date().getFullYear();
 export let month = new Date().getMonth();
 
 
