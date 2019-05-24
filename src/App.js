@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 
 // Components
 import CalendarDisplay from "./components/CalendarDisplay";
+import DateSelector from "./components/DateSelector";
 
 // Context
 import Provider, { MyContext } from "./components/Provider";
@@ -11,7 +12,10 @@ const App = () => {
     <Provider>
       <MyContext.Consumer>
         {context => (
-          <CalendarDisplay {...context} />
+          <Fragment>
+            <CalendarDisplay {...context} />
+            <DateSelector {...context} />
+          </Fragment>
         )}
       </MyContext.Consumer>
     </Provider>
