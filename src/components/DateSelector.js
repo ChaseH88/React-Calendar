@@ -1,12 +1,12 @@
 import React from "react";
 
 const DateSelector = (props) => {
-
+  
   const monthsInYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   // Grab the month and the year
   const { month, year } = props;
-  
+
   // Select the Month
   const generateSelectMonth = () => {
 
@@ -14,12 +14,12 @@ const DateSelector = (props) => {
     let monthSelector = [];
     monthsInYear.forEach((m, index) => {
       index === month ?
-        monthSelector.push(<option selected value={index} key={m}>{m}</option>) :
+        monthSelector.push(<option value={index} key={m}>{m}</option>) :
         monthSelector.push(<option value={index} key={m}>{m}</option>)
     });
     // Return the HTML
     return(
-      <select onChange={handleMonthChange}>
+      <select onChange={handleMonthChange} defaultValue={month}>
         {monthSelector}
       </select>
     )
@@ -45,12 +45,12 @@ const DateSelector = (props) => {
     for(let i= -(yearsToShow); i <= yearsToShow; i++){
       // add selected if matches current year
       year+i === year ?
-        selectYearArr.push(<option selected value={year+i}>{year+i}</option>) :
-        selectYearArr.push(<option value={year+i}>{year+i}</option>)
+        selectYearArr.push(<option value={year+i} key={year+i}>{year+i}</option>) :
+        selectYearArr.push(<option value={year+i} key={year+i}>{year+i}</option>)
     }
     // render the html
     return(
-      <select onChange={handleYearChange}>
+      <select onChange={handleYearChange} defaultValue={year}>
         {selectYearArr}
       </select>
     )

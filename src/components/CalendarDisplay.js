@@ -16,7 +16,7 @@ const CalendarDisplay = ({ year, month }) => {
   const generateDaysOfWeek = () => {
     let days = daysOfTheWeek.map(day => {
       return(
-        <div className="day">
+        <div className="day" key={day}>
           {day}
         </div>
       )
@@ -66,7 +66,7 @@ const CalendarDisplay = ({ year, month }) => {
     }
 
     // grab the data
-    let { currentMonth, weeks } = monthData; 
+    let { currentMonth } = monthData; 
     
     // Render The Calendar
     return(

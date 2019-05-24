@@ -7,7 +7,7 @@ import { DayStyle } from "./styled-components/Day";
 const Day = (props) => {
   
   // Grab the day data
-  const { date, month, year } = props;
+  const { date, month } = props;
 
   // Adds classes depending on if current month
   const checkCurrentMonth = (date, month) => {
