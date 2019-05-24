@@ -2,10 +2,30 @@ import styled from "styled-components";
 
 export const DayStyle = styled.div`
   min-height: 50px;
-  height: 3vw;
+  height: 6vw;
   max-height: 200px;
   box-shadow: inset 0 0 0px 1px #eadfdf;
+  position: relative;
   &.notCurrent {
-    opacity: .65;
+    background-color: #f3f3f3;
+  }
+  & > .num {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    bottom: auto;
+    border: 1px solid #eadfdf;
+    border-top: 0;
+    border-right: 0;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & span {
+      font-size: 13px;
+      color: #252525
+    }
   }
 `;

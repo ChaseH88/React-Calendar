@@ -22,7 +22,7 @@ const CalendarDisplay = ({ year, month }) => {
       )
     });
     return(
-      <WeekStyle className="week">
+      <WeekStyle className="week days">
         {days}
       </WeekStyle>
     );

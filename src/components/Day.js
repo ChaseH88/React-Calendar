@@ -19,8 +19,10 @@ const Day = (props) => {
   }
 
   return(
-    <DayStyle className={`day ${checkCurrentMonth(date, month)}`}>
-      {moment(date).format("Do")}
+    <DayStyle className={`day ${checkCurrentMonth(date, month)}`} title={moment(date).format("dddd, MMMM Do YYYY")}>
+      <div className="num">
+        <span>{moment(date).format("Do")}</span>
+      </div>
     </DayStyle>
   )
 }

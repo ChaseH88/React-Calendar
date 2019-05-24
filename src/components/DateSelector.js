@@ -13,9 +13,7 @@ const DateSelector = (props) => {
     // dynamically populate the select month option
     let monthSelector = [];
     monthsInYear.forEach((m, index) => {
-      index === month ?
-        monthSelector.push(<option value={index} key={m}>{m}</option>) :
-        monthSelector.push(<option value={index} key={m}>{m}</option>)
+      monthSelector.push(<option value={index} key={m}>{m}</option>)
     });
     // Return the HTML
     return(
@@ -43,10 +41,7 @@ const DateSelector = (props) => {
 
     // generate the years html and push to the array
     for(let i= -(yearsToShow); i <= yearsToShow; i++){
-      // add selected if matches current year
-      year+i === year ?
-        selectYearArr.push(<option value={year+i} key={year+i}>{year+i}</option>) :
-        selectYearArr.push(<option value={year+i} key={year+i}>{year+i}</option>)
+      selectYearArr.push(<option value={year+i} key={year+i}>{year+i}</option>)
     }
     // render the html
     return(
