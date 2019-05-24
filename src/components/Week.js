@@ -47,7 +47,6 @@ const Week = (props) => {
         // Get the total of days needed from the previous month
         let daysNeededCount = 7 - daysArr.length;
         // get the total of days in previous month
-        let daysInMonth = 32 - new Date(year, month+1, 32).getDate();
         let addedDays = [] // temp placeholder for fetched days
 
         // Add the needed days to the "addedDays" temp placeholder

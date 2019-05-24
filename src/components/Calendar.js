@@ -7,12 +7,8 @@ import Month from "./Month";
 // Styled Components
 import { WeekStyle } from "./styled-components/Week";
 
-// Temp, will be eventually generated through state
-let year = new Date().getFullYear();
-let month = new Date().getMonth();
-
-
-const Calendar = () => {
+// Component
+const Calendar = ({ year, month }) => {
 
   let daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
 
