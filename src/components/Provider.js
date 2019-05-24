@@ -11,9 +11,28 @@ class Provider extends Component {
     month: new Date().getMonth(),
   }
 
+  // Update Functions
+  // year
+  updateYear = (newYear) => {
+    this.setState({
+      year: newYear
+    });
+  }
+
+    // month
+    updateMonth = (newMonth) => {
+      this.setState({
+        month: newMonth
+      });
+    }
+
   render(){
     return (
-      <MyContext.Provider value={this.state}>
+      <MyContext.Provider value={{
+        state: this.state,
+        updateYear: this.updateYear,
+        updateMonth: this.updateMonth
+      }}>
         {this.props.children}
       </MyContext.Provider>
     );

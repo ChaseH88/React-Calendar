@@ -8,7 +8,10 @@ import Month from "./Month";
 import { WeekStyle } from "./styled-components/Week";
 
 // Component
-const CalendarDisplay = ({ year, month }) => {
+const CalendarDisplay = (props) => {
+  
+  // Pull the data out of context
+  const { month, year } = props.state;
 
   let daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
 
@@ -48,6 +51,7 @@ const CalendarDisplay = ({ year, month }) => {
     //get all the individual days from the month and sort
     let weekCount = 0; // count the weeks, increment when "Sunday"
     for(let i=1; i <= daysInMonth; i++){
+      debugger
       let dayInMonth = new Date(year, month, i);
 
       //increment the week count if the day is sunday
@@ -56,7 +60,7 @@ const CalendarDisplay = ({ year, month }) => {
 
       //if month ends on a sunday, potentially 6 week span
       let addedArray = false;
-      if( addedArray === false && i === 30 && monthData.weeks.length === 5 && monthData.weeks[4].length === 7){
+      if( addedArray === false && i > 29 && monthData.weeks.length === 5 && monthData.weeks[4].length === 7){
         monthData.weeks[5] = [];
         addedArray = true;
       }
@@ -71,7 +75,7 @@ const CalendarDisplay = ({ year, month }) => {
     // Render The Calendar
     return(
       <Fragment>
-        <Month month={currentMonth} key={`month${currentMonth}`} />
+        <Month month={currentMonth} year={year} key={`month${currentMonth}`} />
         {generateDaysOfWeek()}
         {monthData.weeks.map((week, index) => {
           return(<Week {...week} key={`week${index}`} year={year} month={month} />)

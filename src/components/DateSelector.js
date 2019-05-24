@@ -5,7 +5,7 @@ const DateSelector = (props) => {
   const monthsInYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   // Grab the month and the year
-  const { month, year } = props;
+  const { month, year } = props.state;
 
   // Select the Month
   const generateSelectMonth = () => {
@@ -27,9 +27,8 @@ const DateSelector = (props) => {
   // Handle the month change
   const handleMonthChange = (e) => {
     // When the month is changed, update the state
-    let selected = e.target.value;
-    console.log("Month", selected);
-    //add logic to update the state
+    let selected = parseFloat(e.target.value);
+    props.updateMonth(selected);
   }
 
   // Select the Year
@@ -41,6 +40,7 @@ const DateSelector = (props) => {
 
     // generate the years html and push to the array
     for(let i= -(yearsToShow); i <= yearsToShow; i++){
+      console.log(typeof year)
       selectYearArr.push(<option value={year+i} key={year+i}>{year+i}</option>)
     }
     // render the html
@@ -54,9 +54,8 @@ const DateSelector = (props) => {
   // Handle the year change
   const handleYearChange = (e) => {
     // When the year is changed, update the state
-    let selected = e.target.value;
-    console.log("Year", selected);
-    //add logic to update the state
+    let selected = parseFloat(e.target.value);
+    props.updateYear(selected);
   }
 
   // Render the HTML
