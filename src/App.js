@@ -1,17 +1,20 @@
 import React, { Fragment } from "react";
 
 // Components
-import Calendar from "./components/Calendar";
+import CalendarDisplay from "./components/CalendarDisplay";
 
-// Temp, will be eventually generated through state
-let year = new Date().getFullYear();
-let month = new Date().getMonth();
+// Context
+import Provider, { MyContext } from "./components/Provider";
 
 const App = () => {
   return(
-    <Fragment>
-      <Calendar year={year} month={month} />
-    </Fragment>
+    <Provider>
+      <MyContext.Consumer>
+        {context => (
+          <CalendarDisplay {...context} />
+        )}
+      </MyContext.Consumer>
+    </Provider>
   )
 }
 

@@ -8,7 +8,7 @@ import Month from "./Month";
 import { WeekStyle } from "./styled-components/Week";
 
 // Component
-const Calendar = ({ year, month }) => {
+const CalendarDisplay = ({ year, month }) => {
 
   let daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
 
@@ -54,6 +54,13 @@ const Calendar = ({ year, month }) => {
       let day = dayInMonth.toString().toLowerCase().substring(0, 3);
       if(day === "sun" && i !== 1) weekCount++;
 
+      //if month ends on a sunday, potentially 6 week span
+      let addedArray = false;
+      if( addedArray === false && i === 30 && monthData.weeks.length === 5 && monthData.weeks[4].length === 7){
+        monthData.weeks[5] = [];
+        addedArray = true;
+      }
+
       //add the days to the corresponding week
       monthData.weeks[weekCount].push(dayInMonth);
     }
@@ -77,10 +84,9 @@ const Calendar = ({ year, month }) => {
   
   return (
     <div id="calendar">
-      
       {calendarWeeks()}
     </div>
   );
 }
 
-export default Calendar;
+export default CalendarDisplay;
