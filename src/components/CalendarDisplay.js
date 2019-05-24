@@ -51,7 +51,6 @@ const CalendarDisplay = (props) => {
     //get all the individual days from the month and sort
     let weekCount = 0; // count the weeks, increment when "Sunday"
     for(let i=1; i <= daysInMonth; i++){
-      debugger
       let dayInMonth = new Date(year, month, i);
 
       //increment the week count if the day is sunday
@@ -60,7 +59,7 @@ const CalendarDisplay = (props) => {
 
       //if month ends on a sunday, potentially 6 week span
       let addedArray = false;
-      if( addedArray === false && i > 29 && monthData.weeks.length === 5 && monthData.weeks[4].length === 7){
+      if( addedArray === false && i > 28 && monthData.weeks.length === 5 && monthData.weeks[4].length === 7){
         monthData.weeks[5] = [];
         addedArray = true;
       }

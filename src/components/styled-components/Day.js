@@ -6,6 +6,9 @@ export const DayStyle = styled.div`
   max-height: 200px;
   box-shadow: inset 0 0 0px 1px #eadfdf;
   position: relative;
+  &.today {
+    background-color: #ddddff;
+  }
   &.notCurrent {
     background-color: #f3f3f3;
   }

@@ -5,7 +5,7 @@ const monthsInYear = ["January", "February", "March", "April", "May", "June", "J
 
 const Month = ({ month, year }) => {
   return(
-    <div className="month">
+    <div className="month" style={{textAlign: "center"}}>
       <h2>{monthsInYear[month]} {year}</h2>
     </div>
   )

@@ -40,7 +40,6 @@ const DateSelector = (props) => {
 
     // generate the years html and push to the array
     for(let i= -(yearsToShow); i <= yearsToShow; i++){
-      console.log(typeof year)
       selectYearArr.push(<option value={year+i} key={year+i}>{year+i}</option>)
     }
     // render the html
@@ -58,6 +57,24 @@ const DateSelector = (props) => {
     props.updateYear(selected);
   }
 
+  const generateTodayButton = () => {
+    let d = new Date();
+    let cMonth = d.getMonth();
+    let cYear = d.getFullYear();
+    if(cYear === year && cMonth === month){
+      return(<button disabled onClick={goToToday}>Go to Today</button>)
+    } else {
+      return(<button onClick={goToToday}>Go to Today</button>)
+    }
+  }
+
+  const goToToday = () => {
+    let month = new Date().getMonth();
+    let year = new Date().getFullYear();
+    props.updateYear(year);
+    props.updateMonth(month);
+  }
+
   // Render the HTML
   return(
     <div id="dateSelector">
@@ -66,6 +83,9 @@ const DateSelector = (props) => {
       </div>
       <div className="year">
         {generateSelectYear()}
+      </div>
+      <div className="today">
+        {generateTodayButton()}
       </div>
     </div>
   )

@@ -25,6 +25,9 @@ const Week = (props) => {
     // Add data for blank days
     if(daysArr.length < 7){
       //grab the day
+      
+      if(daysArr[0] === undefined) return // will return on rare leap years if month starts on Sunday
+
       let day = daysArr[0].toString().toLowerCase().substring(0, 3);
       //check to see where days are needed to fill in
       if(day !== "sun"){
