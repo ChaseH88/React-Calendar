@@ -12,23 +12,38 @@ export const DayStyle = styled.div`
   &.notCurrent {
     background-color: #f3f3f3;
   }
-  & > .num {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: auto;
-    bottom: auto;
-    border: 1px solid #eadfdf;
-    border-top: 0;
-    border-right: 0;
-    height: 35px;
-    width: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    & span {
-      font-size: 13px;
-      color: #252525
+  & > button {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+    &:hover {
+      background-color: #b5ffc2;
+    }
+    &:focus {
+      outline: none;
+    }
+    & .num {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: auto;
+      bottom: auto;
+      border: 1px solid #eadfdf;
+      border-top: 0;
+      border-right: 0;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & span {
+        font-size: 13px;
+        color: #252525
+      }
     }
   }
 `;

@@ -27,11 +27,30 @@ const Day = (props) => {
     return todayClass;
   }
 
+  const handleClick = (date) => {
+    // get the selected month and year
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    // get the current month and year in the state
+    console.log(props);
+    console.log("--------above---------")
+    if(props.year === year && props.month === month){
+      props.activeDay(date);
+    } else {
+      //switch the month since the user selected day not in current month
+      props.updateYear(year);
+      props.updateMonth(month);
+      props.activeDay(date);
+    }
+  }
+
   return(
     <DayStyle className={`day ${checkCurrentMonth(date, month)} ${checkCurrentDay(date)}`} title={moment(date).format("dddd, MMMM Do YYYY")}>
-      <div className="num">
-        <span>{moment(date).format("Do")}</span>
-      </div>
+      <button onClick={()=> handleClick(date)}>
+        <div className="num">
+          <span>{moment(date).format("Do")}</span>
+        </div>
+      </button>
     </DayStyle>
   )
 }

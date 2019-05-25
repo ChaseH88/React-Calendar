@@ -62,9 +62,9 @@ const DateSelector = (props) => {
     let cMonth = d.getMonth();
     let cYear = d.getFullYear();
     if(cYear === year && cMonth === month){
-      return(<button disabled onClick={goToToday}>Go to Today</button>)
+      return(<button disabled key="gototoday" onClick={goToToday}>Go to Today</button>)
     } else {
-      return(<button onClick={goToToday}>Go to Today</button>)
+      return(<button key="gototoday" onClick={goToToday}>Go to Today</button>)
     }
   }
 

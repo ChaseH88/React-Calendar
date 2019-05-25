@@ -3,6 +3,7 @@ import "./App.css";
 
 // Components
 import CalendarDisplay from "./components/CalendarDisplay";
+import SelectedDayModal from "./components/SelectedDayModal";
 import DateSelector from "./components/DateSelector";
 
 // Context
@@ -15,6 +16,7 @@ const App = () => {
         {context => (
           <Fragment>
             <CalendarDisplay {...context} />
+            <SelectedDayModal {...context} />
             <DateSelector {...context} />
           </Fragment>
         )}

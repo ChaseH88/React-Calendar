@@ -1,6 +1,9 @@
 import React from "react";
 import Day from "./Day";
 
+// Context
+import { MyContext } from "./Provider";
+
 // Styled Component
 import { WeekStyle } from "./styled-components/Week";
 
@@ -63,8 +66,14 @@ const Week = (props) => {
     }
 
     // Render the days
-    let dayRender = daysArr.map(day => {
-      return <Day {...day} date={day} key={day.toString().toLowerCase().replace(/ /g,"")} month={month} year={year} />
+    let dayRender = daysArr.map((day, index) => {
+      return(
+        <MyContext.Consumer key={`consumer${index}`}>
+          {context => (
+            <Day {...context} {...day} date={day} key={day.toString().toLowerCase().replace(/ /g,"")} month={month} year={year} />
+          )}
+        </MyContext.Consumer>
+      )
     })
     return dayRender;
   }
