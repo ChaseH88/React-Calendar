@@ -1,8 +1,13 @@
 import React, { Fragment } from "react";
+import { graphql } from 'react-apollo';
+
+// Queries
+import { getEventsQuery } from '../query/main.js';
 
 // Components
 import Week from "./Week";
 import Month from "./Month";
+import Loading from "./Loading.js";
 
 // Styled Components
 import { WeekStyle } from "./styled-components/Week";
@@ -10,6 +15,9 @@ import { WeekStyle } from "./styled-components/Week";
 // Component
 const CalendarDisplay = (props) => {
   
+  // Pull the data from Apollo
+  const { data } = props;
+
   // Pull the data out of context
   const { month, year } = props.state;
 
@@ -74,6 +82,7 @@ const CalendarDisplay = (props) => {
     // Render The Calendar
     return(
       <Fragment>
+        {data.Loading && <Loading />}
         <Month month={currentMonth} year={year} key={`month${currentMonth}`} />
         {generateDaysOfWeek()}
         {monthData.weeks.map((week, index) => {
@@ -92,4 +101,4 @@ const CalendarDisplay = (props) => {
   );
 }
 
-export default CalendarDisplay;
+export default graphql(getEventsQuery)(CalendarDisplay);

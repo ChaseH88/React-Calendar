@@ -5,7 +5,7 @@ import moment from "moment";
 import { SelectedDayModalStyle } from "./styled-components/SelectedDayModal";
 
 const SelectedDayModal = (props) => {
-  console.log(props)
+  
   const { showSelected, selectedDay } = props.state;
 
   const checkSelectedDay = () => {

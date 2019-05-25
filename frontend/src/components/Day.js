@@ -32,8 +32,6 @@ const Day = (props) => {
     let month = date.getMonth();
     let year = date.getFullYear();
     // get the current month and year in the state
-    console.log(props);
-    console.log("--------above---------")
     if(props.year === year && props.month === month){
       props.activeDay(date);
     } else {
