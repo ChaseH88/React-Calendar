@@ -1,11 +1,19 @@
 import React from "react";
 import moment from "moment";
+import { graphql } from 'react-apollo';
+
+// GraphQL Query
+import { getEventsQuery } from "../query/main";
 
 // Styles
 import { DayStyle } from "./styled-components/Day";
 
 const Day = (props) => {
   
+  // Get the data from apollo
+  const { data } = props;
+  if(data.loading) return(<div></div>);
+
   // Grab the day data
   const { date, month } = props;
 
@@ -48,9 +56,24 @@ const Day = (props) => {
         <div className="num">
           <span>{moment(date).format("Do")}</span>
         </div>
+        {data.events.map((event, i) => {
+          let d = new Date(event.date);
+          let dDay = d.getDate();
+          let dMonth = d.getMonth();
+          let dYear = d.getFullYear();
+          if(date.getDate() === dDay && date.getMonth() === dMonth && date.getFullYear() === dYear){
+            return(
+              <div className="event" key={`${d.getTime().toString()}${i}`}>
+                <span>{event.name}</span>
+              </div>
+            )
+          } else {
+            return "";
+          }
+        })}
       </button>
     </DayStyle>
   )
 }
 
-export default Day;
+export default graphql(getEventsQuery)(Day);

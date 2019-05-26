@@ -11,6 +11,7 @@ class Provider extends Component {
     month: new Date().getMonth(),
     showSelected: false,
     selectedDay: null,
+    addEvent: false
   }
 
   // Update Functions
@@ -40,6 +41,19 @@ class Provider extends Component {
     this.setState({
       showSelected: false,
       selectedDay: null,
+      addEvent: false
+    });
+  }
+
+  openAddEventToDay = () => {
+    this.setState({
+      addEvent: true,
+    });
+  }
+
+  closeAddEventToDay = () => {
+    this.setState({
+      addEvent: false,
     });
   }
 
@@ -50,7 +64,9 @@ class Provider extends Component {
         updateYear: this.updateYear,
         updateMonth: this.updateMonth,
         activeDay: this.activeDay,
-        closeActiveDayModal: this.closeActiveDayModal
+        closeActiveDayModal: this.closeActiveDayModal,
+        openAddEventToDay: this.openAddEventToDay,
+        closeAddEventToDay: this.closeAddEventToDay
       }}>
         {this.props.children}
       </MyContext.Provider>

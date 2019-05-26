@@ -11,6 +11,26 @@ body {
   margin: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+/* -- MAIN -- */
+#calendar {margin: 20px auto; max-width: 85%; border: 1px solid #eee;}
+
+/* Calendar Display */
+#calendarDisplay {}
+/*month*/
+#calendarDisplay div.month {background: #5B5B5B; padding: 10px 0;}
+#calendarDisplay div.month h2 {color: #fff; font-size: 32px;}
+/*days of the week*/
+#calendarDisplay div.week.days {background-color: #C9C19F; padding: 5px 0;}
+
+/* Date Selector */
+#dateSelector {display: flex; align-items: center; justify-content: flex-end; background-color: #C9C19F; padding: 5px 0;}
+#dateSelector > div {margin: 0 5px;}
+#dateSelector > div select {}
+#dateSelector > div button {cursor: pointer;}
 
 @-webkit-keyframes rotating /* Safari and Chrome */ {
   from {

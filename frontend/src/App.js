@@ -1,15 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import "./App.css";
 
-// Components
-import CalendarDisplay from "./components/CalendarDisplay";
-import SelectedDayModal from "./components/SelectedDayModal";
-import DateSelector from "./components/DateSelector";
-
 // Context
-import Provider, { MyContext } from "./components/Provider";
+import Provider from "./components/Provider";
+
+// Main Calendar Component
+import Calendar from "./components/Calendar";
 
 //Apollo Client Setup
 var root = "http://localhost:4000/graphql";
@@ -19,15 +17,7 @@ const App = () => {
   return(
     <ApolloProvider client={client}>
       <Provider>
-        <MyContext.Consumer>
-          {context => (
-            <Fragment>
-              <CalendarDisplay {...context} />
-              <SelectedDayModal {...context} />
-              <DateSelector {...context} />
-            </Fragment>
-          )}
-        </MyContext.Consumer>
+        <Calendar />
       </Provider>
     </ApolloProvider>
   )
