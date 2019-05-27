@@ -78,6 +78,20 @@ const DateSelector = (props) => {
   // Render the HTML
   return(
     <div id="dateSelector">
+      <div className="filter">
+        <div style={{marginRight: "6px", display: "inline-block"}}>
+          <label>Personal</label><input type="checkbox" value="personal" />
+        </div>
+        <div style={{marginRight: "6px", display: "inline-block"}}>
+          <label>Bill</label><input type="checkbox" value="bill" />
+        </div>
+        <div style={{marginRight: "6px", display: "inline-block"}}>
+          <label>Work</label><input type="checkbox" value="work" />
+        </div>
+        <div style={{marginRight: "6px", display: "inline-block"}}>
+          <label>Other</label><input type="checkbox" value="other" />
+        </div>
+      </div>
       <div className="month">
         {generateSelectMonth()}
       </div>

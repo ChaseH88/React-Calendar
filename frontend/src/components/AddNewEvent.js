@@ -5,6 +5,9 @@ import styled from "styled-components";
 // GraphQL Query
 import { addEventMutation, getEventsQuery } from "../query/main";
 
+// Styled Component
+import { ButtonStyle } from "./styled-components/Button";
+
 // Styles
 const FormStyle = styled.form`
   display: block;
@@ -93,8 +96,8 @@ class NewEvent extends React.Component {
           <label>True</label><input type="radio" name="allDay" value="true" onChange={this.handleState} />
         </div>
         <div className="formElm">
-          <button>Add Event!</button>
-          <button onClick={this.props.closeModal}>Cancel</button>
+          <ButtonStyle>Add Event!</ButtonStyle>
+          <ButtonStyle onClick={this.props.closeModal}>Cancel</ButtonStyle>
         </div>
       </FormStyle>
     )

@@ -8,13 +8,43 @@ import { getEventsQuery } from "../query/main";
 
 // Styled Component
 import { SelectedDayModalStyle } from "./styled-components/SelectedDayModal";
+import { ButtonStyle } from "./styled-components/Button";
 
 // Components
 import NewEvent from "./AddNewEvent";
 
 // Styles
 const EventStyle = styled.div`
-  display: block;
+  display: flex;
+  align-items: center;
+  border: 1px solid #eee;
+  padding: 5px 15px;
+  margin: 0 0 5px;
+  & > div {
+    &.left {
+      text-align: left;
+      flex: 1 1 35%;
+    }
+    &.right {
+      text-align: right;
+      flex: 1 1 65%;
+      & span {
+        font-size: 12px;
+      }
+    }
+  }
+  & span {
+    display: block;
+    &.name {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0 0 5px;
+    }
+    &.details {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
 `;
 
 const SelectedDayModal = (props) => {
@@ -23,7 +53,6 @@ const SelectedDayModal = (props) => {
   const { selectedDay, addEvent } = props.state;
   // Grab from apollo
   const { data } = props;
-  console.log(data);
 
   // Event Count
   let count = 0;
@@ -47,10 +76,15 @@ const SelectedDayModal = (props) => {
                 count++
                 return(
                   <EventStyle className="event" key={`${d.getTime().toString()}${i}`}>
-                    <strong>Name: <span>{event.name}</span></strong>
-                    <strong>Type: <span>{event.type}</span></strong>
-                    <strong>Author:<span>{event.author}</span></strong>
-                    <strong>Added to Calendar on: <span>{moment(event.createdOn).format("MMMM Do YYYY")}</span></strong>
+                    <div className="left">
+                      <span className="name">{event.name}</span>
+                      <span className="details">{event.details}</span>
+                    </div>
+                    <div className="right">
+                      <span className="type">Type: {event.type}</span>
+                      <span className="added">Added By: {event.author}</span>
+                      <span className="added">Added to Calendar on: {moment(event.createdOn).format("MMMM Do YYYY")}</span>
+                    </div>
                   </EventStyle>
                 )
               } else {
@@ -60,7 +94,7 @@ const SelectedDayModal = (props) => {
             {count === 0 && <div>No events found for this day.</div>}
             </div>
             <div className="addEvent">
-              <button onClick={props.openAddEventToDay}>Add Event</button>
+              {!addEvent && <ButtonStyle onClick={props.openAddEventToDay}>Add Event</ButtonStyle>}
             </div>
             {addEvent && <NewEvent selectedDate={selectedDay} closeModal={props.closeAddEventToDay} />}
           </div>
