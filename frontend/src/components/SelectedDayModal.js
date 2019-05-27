@@ -25,6 +25,9 @@ const SelectedDayModal = (props) => {
   const { data } = props;
   console.log(data);
 
+  // Event Count
+  let count = 0;
+
   return(
     <Fragment>
       <SelectedDayModalStyle>
@@ -41,6 +44,7 @@ const SelectedDayModal = (props) => {
               let dMonth = d.getMonth();
               let dYear = d.getFullYear();
               if(selectedDay.getDate() === dDay && selectedDay.getMonth() === dMonth && selectedDay.getFullYear() === dYear){
+                count++
                 return(
                   <EventStyle className="event" key={`${d.getTime().toString()}${i}`}>
                     <strong>Name: <span>{event.name}</span></strong>
@@ -53,8 +57,8 @@ const SelectedDayModal = (props) => {
                 return "";
               }
             })}
+            {count === 0 && <div>No events found for this day.</div>}
             </div>
-            <p>This is a placeholder.</p>
             <div className="addEvent">
               <button onClick={props.openAddEventToDay}>Add Event</button>
             </div>

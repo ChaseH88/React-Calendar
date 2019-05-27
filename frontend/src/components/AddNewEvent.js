@@ -16,7 +16,7 @@ class NewEvent extends React.Component {
     name: "",
     type: "",
     author: "",
-    details: "",
+    details: "No details have been entered for this event.",
     isRepeating: false,
     allDay: false,
     date: this.props.selectedDate
@@ -48,9 +48,17 @@ class NewEvent extends React.Component {
   handleState = (e) => {
     let val = e.target.value;
     let name = e.target.name;
+    if(name === "isRepeating" || name === "allDay") {
+      val = this.convertBoolean(val);
+    }
     this.setState({
       [name]: val
     });
+  }
+
+  convertBoolean(val){
+    if(val === "true") return true;
+    return false;
   }
 
   render(){
@@ -58,10 +66,10 @@ class NewEvent extends React.Component {
       <FormStyle onSubmit={this.handleSubmit}>
         <h3>Add New Event</h3>
         <div className="formElm">
-          <input placeholder="Event Name" type="text" name="name" onChange={this.handleState} />
+          <input required placeholder="Event Name" type="text" name="name" onChange={this.handleState} />
         </div>
         <div className="formElm">
-          <select name="type" onChange={this.handleState}>
+          <select name="type" onChange={this.handleState} required>
             <option value="personal">Personal</option>
             <option value="bill">Bill</option>
             <option value="work">Work</option>
@@ -69,22 +77,21 @@ class NewEvent extends React.Component {
           </select>
         </div>
         <div className="formElm">
-          <input placeholder="Enter your name" type="text" name="author" onChange={this.handleState} />
+          <input required placeholder="Enter your name" type="text" name="author" onChange={this.handleState} />
         </div>
         <div className="formElm">
           <input placeholder="Enter details about this event" type="text" name="details" onChange={this.handleState} />
         </div>
         <div className="formElm">
           <p>Is this a repeating event?</p>
-          <label>False</label><input type="radio" name="isRepeating" value="false" onChange={this.handleState} />
+          <label>False</label><input checked type="radio" name="isRepeating" value="false" onChange={this.handleState} />
           <label>True</label><input type="radio" name="isRepeating" value="true" onChange={this.handleState} />
         </div>
         <div className="formElm">
           <p>Is this an all day event?</p>
-          <label>False</label><input type="radio" name="allDay" value="false" onChange={this.handleState} />
+          <label>False</label><input checked type="radio" name="allDay" value="false" onChange={this.handleState} />
           <label>True</label><input type="radio" name="allDay" value="true" onChange={this.handleState} />
         </div>
-        <input type="hidden" name="date" value={this.props.selectedDate} />
         <div className="formElm">
           <button>Add Event!</button>
           <button onClick={this.props.closeModal}>Cancel</button>

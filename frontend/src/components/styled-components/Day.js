@@ -7,7 +7,7 @@ export const DayStyle = styled.div`
   box-shadow: inset 0 0 0px 1px #eadfdf;
   position: relative;
   &.today {
-    background-color: #ddddff;
+    background-color: #EDF7B5;
   }
   &.notCurrent {
     background-color: #f3f3f3;
@@ -21,7 +21,7 @@ export const DayStyle = styled.div`
     cursor: pointer;
     transition: background-color 200ms ease;
     &:hover {
-      background-color: #b5ffc2;
+      background-color: #EDF7D2;
     }
     &:focus {
       outline: none;
